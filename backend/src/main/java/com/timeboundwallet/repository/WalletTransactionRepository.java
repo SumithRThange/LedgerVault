@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface WalletTransactionRepository extends JpaRepository<WalletTransaction, Long> {
     List<WalletTransaction> findByWalletIdOrderByCreatedAtDesc(Long walletId);
+    void deleteByWalletId(Long walletId);
 
     List<WalletTransaction> findByTypeAndStatusAndExpiryDateBefore(
             TransactionType type,

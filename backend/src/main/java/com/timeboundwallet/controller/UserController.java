@@ -1,6 +1,7 @@
 package com.timeboundwallet.controller;
 
 import com.timeboundwallet.dto.UserCreateRequest;
+import com.timeboundwallet.dto.ApiResponse;
 import com.timeboundwallet.dto.UserResponse;
 import com.timeboundwallet.dto.UserUpdateRequest;
 import com.timeboundwallet.service.UserService;
@@ -45,5 +46,17 @@ public class UserController {
                                                    @PathVariable Long id,
                                                    @Valid @RequestBody UserUpdateRequest request) {
         return ResponseEntity.ok(userService.updateUser(loggedInUserId, id, request));
+    }
+
+    @PutMapping("/{id}/deactivate")
+    public ResponseEntity<ApiResponse> deactivateUser(@RequestHeader("X-USER-ID") Long loggedInUserId,
+                                                      @PathVariable Long id) {
+        return ResponseEntity.ok(userService.deactivateUser(loggedInUserId, id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse> deleteUser(@RequestHeader("X-USER-ID") Long loggedInUserId,
+                                                  @PathVariable Long id) {
+        return ResponseEntity.ok(userService.deleteUser(loggedInUserId, id));
     }
 }

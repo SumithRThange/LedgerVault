@@ -106,6 +106,7 @@ public class ViewUsersActivity extends AppCompatActivity {
             builder.append("ID: ").append(user.getId())
                     .append(" | Name: ").append(user.getName())
                     .append(" | Email: ").append(user.getEmail())
+                    .append(" | Status: ").append(Boolean.TRUE.equals(user.getActive()) ? "ACTIVE" : "DEACTIVATED")
                     .append("\n");
         }
         tvUsersResult.setText(builder.toString().trim());

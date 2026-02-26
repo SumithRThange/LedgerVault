@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.timeboundwallet.R;
+import com.timeboundwallet.models.ApiMessageResponse;
 import com.timeboundwallet.models.UserResponse;
 import com.timeboundwallet.models.UserUpdateRequest;
 import com.timeboundwallet.models.WalletLimitUpdateRequest;
@@ -55,6 +56,8 @@ public class SettingsActivity extends AppCompatActivity {
         Button btnViewUsers = findViewById(R.id.btnViewUsers);
         Button btnEditUser = findViewById(R.id.btnEditUser);
         Button btnEditWalletLimit = findViewById(R.id.btnEditWalletLimit);
+        Button btnDeactivateAccount = findViewById(R.id.btnDeactivateAccount);
+        Button btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
 
         apiService = RetrofitClient.getApiService();
 
@@ -73,6 +76,8 @@ public class SettingsActivity extends AppCompatActivity {
         });
         btnEditUser.setOnClickListener(v -> editUserCredentials());
         btnEditWalletLimit.setOnClickListener(v -> editWalletLimit());
+        btnDeactivateAccount.setOnClickListener(v -> deactivateAccount());
+        btnDeleteAccount.setOnClickListener(v -> deleteAccount());
     }
 
     private void editUserCredentials() {
@@ -157,6 +162,60 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<WalletResponse> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(SettingsActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void deactivateAccount() {
+        progressBar.setVisibility(View.VISIBLE);
+        apiService.deactivateUser(loggedInUserId, loggedInUserId).enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<ApiMessageResponse> call,
+                                   Response<ApiMessageResponse> response) {
+                progressBar.setVisibility(View.GONE);
+                if (!response.isSuccessful()) {
+                    Toast.makeText(SettingsActivity.this,
+                            ApiErrorParser.parse(response, "Account deactivation failed"),
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                String message = response.body() != null ? response.body().getMessage() : "Account deactivated";
+                Toast.makeText(SettingsActivity.this, message + ". Please login again.", Toast.LENGTH_LONG).show();
+                logoutToRegister();
+            }
+
+            @Override
+            public void onFailure(Call<ApiMessageResponse> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(SettingsActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void deleteAccount() {
+        progressBar.setVisibility(View.VISIBLE);
+        apiService.deleteUser(loggedInUserId, loggedInUserId).enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<ApiMessageResponse> call,
+                                   Response<ApiMessageResponse> response) {
+                progressBar.setVisibility(View.GONE);
+                if (!response.isSuccessful()) {
+                    Toast.makeText(SettingsActivity.this,
+                            ApiErrorParser.parse(response, "Account deletion failed"),
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                String message = response.body() != null ? response.body().getMessage() : "Account deleted";
+                Toast.makeText(SettingsActivity.this, message, Toast.LENGTH_LONG).show();
+                logoutToRegister();
+            }
+
+            @Override
+            public void onFailure(Call<ApiMessageResponse> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(SettingsActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }

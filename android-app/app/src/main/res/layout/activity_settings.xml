@@ -98,6 +98,27 @@
             android:layout_marginTop="8dp"
             android:text="Update Wallet Limit" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="4) Account Actions"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnDeactivateAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Deactivate Account" />
+
+        <Button
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Delete Account" />
+
         <ProgressBar
             android:id="@+id/progressBarSettings"
             android:layout_width="wrap_content"

@@ -4,6 +4,7 @@ public class UserResponse {
     private Long id;
     private String name;
     private String email;
+    private Boolean active;
 
     public Long getId() {
         return id;
@@ -15,5 +16,9 @@ public class UserResponse {
 
     public String getEmail() {
         return email;
+    }
+
+    public Boolean getActive() {
+        return active;
     }
 }

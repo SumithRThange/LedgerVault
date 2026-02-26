@@ -31,6 +31,14 @@ public interface ApiService {
                                   @Path("id") Long userId,
                                   @Body UserUpdateRequest request);
 
+    @retrofit2.http.PUT("users/{id}/deactivate")
+    Call<ApiMessageResponse> deactivateUser(@Header("X-USER-ID") Long loggedInUserId,
+                                            @Path("id") Long userId);
+
+    @retrofit2.http.DELETE("users/{id}")
+    Call<ApiMessageResponse> deleteUser(@Header("X-USER-ID") Long loggedInUserId,
+                                        @Path("id") Long userId);
+
     @POST("wallet")
     Call<WalletResponse> createWallet(@Body WalletCreateRequest request);
 

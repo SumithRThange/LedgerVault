@@ -44,6 +44,7 @@ public class WalletService {
     }
 
     public WalletResponse getWalletBalance(Long userId) {
+        validateActiveUser(userId);
         Wallet wallet = walletRepository.findByUserId(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("Wallet not found for user: " + userId));
 
@@ -52,6 +53,7 @@ public class WalletService {
 
     @Transactional
     public WalletResponse updateWalletLimit(Long userId, WalletLimitUpdateRequest request) {
+        validateActiveUser(userId);
         Wallet wallet = walletRepository.findByUserId(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("Wallet not found for user: " + userId));
 
@@ -66,6 +68,7 @@ public class WalletService {
 
     @Transactional
     public WalletResponse addMoney(Long userId, AddMoneyRequest request) {
+        validateActiveUser(userId);
         Wallet wallet = walletRepository.findByUserId(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("Wallet not found for user: " + userId));
 
@@ -102,6 +105,9 @@ public class WalletService {
 
         Wallet receiver = walletRepository.findById(request.getReceiverWalletId())
                 .orElseThrow(() -> new ResourceNotFoundException("Receiver wallet not found: " + request.getReceiverWalletId()));
+
+        validateActiveUser(sender.getUser().getId());
+        validateActiveUser(receiver.getUser().getId());
 
         BigDecimal amount = request.getAmount();
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
@@ -195,6 +201,14 @@ public class WalletService {
                 .balance(wallet.getBalance())
                 .maxLimit(wallet.getMaxLimit())
                 .build();
+    }
+
+    private void validateActiveUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found: " + userId));
+        if (!Boolean.TRUE.equals(user.getActive())) {
+            throw new BusinessException("Account is deactivated");
+        }
     }
 
     private WalletTransactionResponse toTransactionResponse(WalletTransaction tx) {
