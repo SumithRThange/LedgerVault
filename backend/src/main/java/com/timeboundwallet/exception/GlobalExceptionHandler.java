@@ -2,10 +2,12 @@ package com.timeboundwallet.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.MissingRequestHeaderException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -35,6 +37,16 @@ public class GlobalExceptionHandler {
             errors.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
         return ResponseEntity.badRequest().body(errors);
+    }
+
+    @ExceptionHandler(MissingRequestHeaderException.class)
+    public ResponseEntity<Map<String, String>> handleMissingHeader(MissingRequestHeaderException ex) {
+        return buildError(HttpStatus.BAD_REQUEST, "Missing required header: " + ex.getHeaderName());
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, String>> handleDataIntegrity(DataIntegrityViolationException ex) {
+        return buildError(HttpStatus.BAD_REQUEST, "Operation failed due to related database records");
     }
 
     @ExceptionHandler(Exception.class)

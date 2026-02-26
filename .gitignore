@@ -5,6 +5,7 @@
 /android-app/.gradle/
 /android-app/**/build/
 /android-app/local.properties
+*.apk
 
 # OS
 .DS_Store

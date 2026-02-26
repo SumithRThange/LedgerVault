@@ -2,23 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Transaction History"
-        android:textColor="#000000"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_ledgervault_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Transaction History"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBarTransactions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView

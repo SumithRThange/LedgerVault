@@ -131,11 +131,14 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found: " + userId));
 
         walletRepository.findByUserId(userId).ifPresent(wallet -> {
-            walletTransactionRepository.deleteByWalletId(wallet.getId());
+            walletTransactionRepository.deleteAllByWalletId(wallet.getId());
+            walletTransactionRepository.flush();
             walletRepository.delete(wallet);
+            walletRepository.flush();
         });
 
         userRepository.delete(user);
+        userRepository.flush();
         return new ApiResponse("Account deleted successfully");
     }
 

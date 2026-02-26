@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -19,8 +20,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_ledgervault_logo" />
 
@@ -29,52 +30,83 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="@string/app_name"
-                android:textSize="26sp"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btnViewBalance"
-            android:layout_width="108dp"
-            android:layout_height="58dp"
-            android:text="View Balance" />
+            android:layout_width="126dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_button_soft"
+            android:text="View Balance"
+            android:textAllCaps="false"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnGoAddMoney"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Add Money" />
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnGoTransfer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Transfer" />
+        <Button
+            android:id="@+id/btnGoAddMoney"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_button_primary"
+            android:text="Add Money"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnGoTransactions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="View Transactions" />
+        <Button
+            android:id="@+id/btnGoTransfer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_primary"
+            android:text="Transfer"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnCreateNewUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Create New User" />
+        <Button
+            android:id="@+id/btnGoTransactions"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_primary"
+            android:text="View Transactions"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnGoSettings"
-        android:layout_width="119dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#1B1919"
-        android:text="Settings" />
+        <Button
+            android:id="@+id/btnCreateNewUser"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_secondary"
+            android:text="Create New User"
+            android:textAllCaps="false"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnGoSettings"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_soft"
+            android:text="Settings"
+            android:textAllCaps="false"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBarDashboard"

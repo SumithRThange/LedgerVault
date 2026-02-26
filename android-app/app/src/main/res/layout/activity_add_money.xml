@@ -1,25 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Money"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/etAddAmount"
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_ledgervault_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Add Money"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Amount"
-        android:inputType="numberDecimal" />
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etAddAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input"
+            android:hint="Amount"
+            android:inputType="numberDecimal"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
+
+        <Button
+            android:id="@+id/btnSubmitAddMoney"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_button_primary"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBarAddMoney"
@@ -28,12 +64,4 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
         android:visibility="gone" />
-
-    <Button
-        android:id="@+id/btnSubmitAddMoney"
-        android:layout_width="119dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="14dp"
-        android:background="#CEB6B6"
-        android:text="Add" />
 </LinearLayout>
