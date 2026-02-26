@@ -1,4 +1,4 @@
-# Time-Bound Wallet System
+# LedgerVault (Time-Bound Wallet System)
 
 Beginner-friendly full project with:
 - `backend/`: Spring Boot + MySQL (single service)
@@ -49,7 +49,11 @@ Update credentials if your MySQL setup is different.
 
 ### Main APIs
 - `POST /users` -> Create user
+- `GET /users` -> List users
 - `GET /users/{id}` -> Get user by ID
+- `PUT /users/{id}` -> Update own credentials (`X-USER-ID` header)
+- `PUT /users/{id}/deactivate` -> Deactivate own account (`X-USER-ID` header)
+- `DELETE /users/{id}` -> Delete own account (`X-USER-ID` header)
 - `POST /wallet` -> Create wallet for user
 - `GET /wallet/{userId}/balance` -> Get wallet balance
 - `POST /wallet/{userId}/add` -> Add money
@@ -89,14 +93,14 @@ android-app/app/src/main/java/com/timeboundwallet/
 
 ### Base URL (Retrofit)
 In `android-app/app/src/main/java/com/timeboundwallet/network/RetrofitClient.java`:
-- Emulator URL: `http://10.0.2.2:8080/`
-- For physical device, replace with your computer IP.
+- Render URL: `https://ledgervault-79sw.onrender.com/`
+- Health check: `GET https://ledgervault-79sw.onrender.com/users`
 
 ### Run Android App
 1. Open `android-app/` in Android Studio.
 2. Let Gradle sync.
 3. Run app on emulator/device.
-4. Ensure backend is running first.
+4. If using local backend, update `RetrofitClient` with your local host/IP.
 
 ## 3) Sample JSON Request Bodies
 
@@ -144,4 +148,3 @@ In `android-app/app/src/main/java/com/timeboundwallet/network/RetrofitClient.jav
 5. Add money to user A wallet
 6. Transfer amount from wallet A to wallet B
 7. Check transactions for both wallets
-
