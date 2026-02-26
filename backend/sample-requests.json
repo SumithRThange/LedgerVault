@@ -1,0 +1,18 @@
+{
+  "createUser": {
+    "name": "Alice",
+    "email": "alice@example.com"
+  },
+  "createWallet": {
+    "userId": 1,
+    "maxLimit": 10000
+  },
+  "addMoney": {
+    "amount": 500
+  },
+  "transfer": {
+    "senderWalletId": 1,
+    "receiverWalletId": 2,
+    "amount": 200
+  }
+}

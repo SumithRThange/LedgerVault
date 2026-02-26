@@ -1,0 +1,10 @@
+# Backend
+/backend/target/
+
+# Android
+/android-app/.gradle/
+/android-app/**/build/
+/android-app/local.properties
+
+# OS
+.DS_Store

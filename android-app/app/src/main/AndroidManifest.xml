@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:label="Time-Bound Wallet"
+        android:roundIcon="@android:drawable/ic_dialog_info"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.TimeBoundWallet">
+
+        <activity android:name=".activities.BalanceActivity" />
+        <activity android:name=".activities.ViewUsersActivity" />
+        <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.TransactionHistoryActivity" />
+        <activity android:name=".activities.TransferActivity" />
+        <activity android:name=".activities.AddMoneyActivity" />
+        <activity android:name=".activities.DashboardActivity" />
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
