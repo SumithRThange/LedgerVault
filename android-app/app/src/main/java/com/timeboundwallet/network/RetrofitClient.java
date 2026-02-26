@@ -5,9 +5,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    // Android emulator -> localhost on your machine = 10.0.2.2
-    // For real device, replace with your machine IP.
-    private static final String BASE_URL = "http://10.0.2.2:8080/";
+    // Deployed backend URL on Render.
+    private static final String BASE_URL = "https://ledgervault-backend.onrender.com/";
 
     private static Retrofit retrofit;
 

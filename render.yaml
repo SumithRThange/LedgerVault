@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ledgervault-backend
+    runtime: docker
+    rootDir: backend
+    plan: free
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
