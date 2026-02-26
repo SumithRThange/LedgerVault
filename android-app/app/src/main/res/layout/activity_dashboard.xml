@@ -35,8 +35,8 @@
 
         <Button
             android:id="@+id/btnViewBalance"
-            android:layout_width="105dp"
-            android:layout_height="match_parent"
+            android:layout_width="108dp"
+            android:layout_height="58dp"
             android:text="View Balance" />
     </LinearLayout>
 
@@ -62,18 +62,19 @@
         android:text="View Transactions" />
 
     <Button
-        android:id="@+id/btnGoSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Settings" />
-
-    <Button
         android:id="@+id/btnCreateNewUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Create New User" />
+
+    <Button
+        android:id="@+id/btnGoSettings"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#1B1919"
+        android:text="Settings" />
 
     <ProgressBar
         android:id="@+id/progressBarDashboard"
