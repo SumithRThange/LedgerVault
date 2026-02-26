@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     // Deployed backend URL on Render.
-    private static final String BASE_URL = "https://ledgervault-backend.onrender.com/";
+    private static final String BASE_URL = "https://ledgervault-79sw.onrender.com/";
 
     private static Retrofit retrofit;
 
